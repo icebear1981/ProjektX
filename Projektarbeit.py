@@ -83,6 +83,7 @@ def db_tab_make():
         db_oeffnen()
         execution_string="CREATE TABLE bestellungen( \
         onr INT AUTO_INCREMENT PRIMARY KEY, \
+        prod_id INT, \
         omenge DECIMAL(3,0) \
         );"
         cursor.execute(execution_string)
@@ -116,7 +117,7 @@ def db_neu_art(a_bez, a_preis):
 def db_neu_bestellung(o_nr,o_menge):
     try:
         db_oeffnen()
-        execution_string=f"INSERT INTO bestellungen VALUES(onr, omenge) {o_nr}, {o_menge};"
+        execution_string=f"INSERT INTO bestellungen VALUES(onr, anr, omenge) {o_nr}, {o_menge};"
         cursor.execute(execution_string)
         db_schliessen()
     except:
