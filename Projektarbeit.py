@@ -1,7 +1,7 @@
 import mysql.connector
 import tkinter.messagebox
 db_server="85.215.172.165"
-db_name="Projekt_X"
+db_name="projektx"
 db_username="root"
 db_userpass="root"
 connection=""
