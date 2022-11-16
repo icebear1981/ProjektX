@@ -1,3 +1,6 @@
+
+from django.db import models
+
 class Kunden(models.Model):
     kdnr = models.IntegerField(primary_key=True)
     kname = models.CharField(max_length=70)
