@@ -6,7 +6,6 @@ db_username="root"
 db_userpass="root"
 connection=""
 cursor=""
-##test GIT
 
 #Datenbank neu erstellen
 def db_erstellen():
@@ -17,7 +16,7 @@ def db_erstellen():
         cursor.execute(execution_string)
         db_tab_make()
         db_schliessen()
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim öffnen der Datenbank")
 
 #Datenbank komplett löschen
@@ -27,7 +26,7 @@ def db_eliminator():
         cursor=connection.cursor()
         execution_string=f"DROP DATABASE {db_name};"
         cursor.execute(execution_string)
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim löschen der Datenbank")
 
 #Datenbank öffnen
@@ -37,7 +36,7 @@ def db_oeffnen():
         cursor=connection.cursor()
         execution_string=f"USE {db_name};"
         cursor.execute(execution_string)
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim öffnen der Datenbank")
 
 #Datenbank schliessen
@@ -45,7 +44,7 @@ def db_schliessen():
     try:
         connection.commit()
         connection.close()
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim schliessen der Datenbank")
 
 #Kundendaten-Tabelle erstellen
@@ -63,7 +62,7 @@ def db_tab_make():
         );"
         cursor.execute(execution_string)
         db_schliessen()
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim erstellen der Tabelle (Kundendaten)")
 
 #Produktdaten-Tabelle erstellen
@@ -76,7 +75,7 @@ def db_tab_make():
         );"        
         cursor.execute(execution_string)
         db_schliessen()
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim erstellen der Tabelle (Produkte)")
 
 #Bestellungen-Tabelle erstellen
@@ -89,7 +88,7 @@ def db_tab_make():
         cursor.execute(execution_string)
         connection.c
         db_schliessen()
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim erstellen der Tabelle (Bestellungen)")
 
 
@@ -100,27 +99,26 @@ def db_neu_kunde(k_name,k_vname,k_str,k_hnr,k_plz,k_ort):
         execution_string=f"INSERT INTO kunden VALUES(kname, kvname, kstr, khausnr, kplz, kort) {k_name}, {k_vname}, {k_str}, {k_hnr}, {k_plz}, {k_ort};"
         cursor.execute(execution_string)
         db_schliessen()
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim erstellen der Tabelle (Bestellungen)")
 
 #Neuen Artikel anlegen
-def db_neu_art(artikel_bez, artikel_preis):
+def db_neu_art(a_bez, a_preis):
     try:
         db_oeffnen()
-        execution_string=f"INSERT INTO artikel VALUES(artnr, artbez, artpreis) {a_nr}, {a_bez}, {a_preis};"
+        execution_string=f"INSERT INTO artikel VALUES(artnr, artbez, artpreis) {a_bez}, {a_preis};"
         cursor.execute(execution_string)
         db_schliessen()
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim anlegen des neuen Artikels")
 
 #Neue Bestellung anlegen
-def db_neu_bestellung(artikel_nr,artikel_anz):
+def db_neu_bestellung(o_nr,o_menge):
     try:
         db_oeffnen()
         execution_string=f"INSERT INTO bestellungen VALUES(onr, omenge) {o_nr}, {o_menge};"
         cursor.execute(execution_string)
         db_schliessen()
-    except
+    except:
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim anlegen der Bestellung")
-
 
