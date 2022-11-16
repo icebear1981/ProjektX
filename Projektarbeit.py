@@ -6,7 +6,7 @@ db_username="root"
 db_userpass="root"
 connection=""
 cursor=""
-
+#
 #Datenbank neu erstellen
 def db_erstellen():
     try:
