@@ -6,6 +6,7 @@ db_username="root"
 db_userpass="root"
 connection=""
 cursor=""
+##test GIT
 
 #Datenbank neu erstellen
 def db_erstellen():
