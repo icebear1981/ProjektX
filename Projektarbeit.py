@@ -1,19 +1,45 @@
 import mysql.connector
 import tkinter.messagebox
 db_server="85.215.172.165"
+db_name="Projekt_X"
 db_username="root"
 db_userpass="root"
-connection=""; cursor=""
+connection=""
+cursor=""
 
+#Datenbank neu erstellen
+def db_erstellen():
+    try:
+        connection=mysql.connector.connect(host=db_server, user=db_username,passwd=db_userpass)
+        cursor=connection.cursor()
+        execution_string=f"CREATE DATABASE {db_name};"
+        cursor.execute(execution_string)
+        db_tab_make()
+        db_schliessen()
+    except
+        tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim öffnen der Datenbank")
 
+#Datenbank komplett löschen
+def db_eliminator():
+    try:
+        connection=mysql.connector.connect(host=db_server, user=db_username,passwd=db_userpass)
+        cursor=connection.cursor()
+        execution_string=f"DROP DATABASE {db_name};"
+        cursor.execute(execution_string)
+    except
+        tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim löschen der Datenbank")
+
+#Datenbank öffnen
 def db_oeffnen():
     try:
         connection=mysql.connector.connect(host=db_server, user=db_username,passwd=db_userpass)
         cursor=connection.cursor()
-        cursor.execute("CREATE DATABASE Projekt_X; USE Projekt_X;")
+        execution_string=f"USE {db_name};"
+        cursor.execute(execution_string)
     except
         tkinter.messagebox.showerror(title=f"Fehler", message="Fehler beim öffnen der Datenbank")
 
+#Datenbank schliessen
 def db_schliessen():
     try:
         connection.commit()
