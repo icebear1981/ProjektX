@@ -19,4 +19,4 @@ class Orders(models.Model):
     onr = models.IntegerField(primary_key=True)
     kdnr = models.ForeignKey(Kunden)
     anr = models.ForeignKey(Artikel)
-    aanz = models.Integer_Field()
+    aanz = models.IntegerField()
